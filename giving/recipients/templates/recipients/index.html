@@ -1,0 +1,14 @@
+{% include "recipients/header.html" %}
+
+{% if recipient_list %}
+    <ul>
+      {% for r in recipient_list %}
+        <li><a href="{{ r.url }}" target="new">{{ r.name }}</a>
+            (<a href="http://www.twitter.com/{{ r.twitter_handle }}" target="new">@{{ r.twitter_handle }})</li>
+      {% endfor %}
+    </ul>
+{% else %}
+    No entries available.<br />
+{% endif %}
+
+{% include "recipients/footer.html" %}
