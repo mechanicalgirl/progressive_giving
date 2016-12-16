@@ -5,6 +5,7 @@ from django.utils import timezone
 from .models import Recipient, Category
 
 def tweet(request):
+
     r = Recipient.objects.filter(active=True, last_posted_date=None).order_by('?')[:1]
     if r:
         r = r[0]
@@ -12,8 +13,10 @@ def tweet(request):
         r = Recipient.objects.filter(active=True).order_by('-last_posted_date')[:1]
         r = r[0]
 
-    r.last_posted_date = timezone.now()
-    r.save(update_fields=["last_posted_date"])
+    post_to_twitter = request.GET.get('post', None)
+    if post_to_twitter:
+        r.last_posted_date = timezone.now()
+        r.save(update_fields=["last_posted_date"])
 
     if r.tweet_text:
         recipient = r.tweet_text
@@ -30,12 +33,13 @@ def tweet(request):
         'r': recipient
     }
 
-    # for cleanup, if needed
+    # to remove all dates, for cleanup if needed
     # all_dated = Recipient.objects.filter(active=True).exclude(last_posted_date=None)
     # for v in all_dated:
     #     v.last_posted_date = None
     #     v.save()
 
+    # to add dates to all, for testing only
     # all_dated = Recipient.objects.filter(active=True, last_posted_date=None)
     # for v in all_dated:
     #     v.last_posted_date = timezone.now()
