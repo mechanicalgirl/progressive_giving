@@ -69,6 +69,7 @@ def newsletter(request):
 
 
 def index(request):
+    """
     groups = []
     cats = Category.objects.all().order_by('?')
     for c in cats:
@@ -84,4 +85,12 @@ def index(request):
     context = {
         'recipient_list': groups
     }
-    return render(request, 'recipients/all.html', context)
+    """
+
+    list_all = Recipient.objects.filter(active=True).order_by('?')[:18]
+    context = {
+        'recipient_list': list_all
+    }
+
+    # return render(request, 'recipients/all.html', context)
+    return render(request, 'recipients/index.html', context)
