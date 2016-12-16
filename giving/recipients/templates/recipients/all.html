@@ -1,0 +1,19 @@
+{% include "recipients/header.html" %}
+
+{% if recipient_list %}
+    <ul>
+    {% for r in recipient_list %}
+        <p>
+            <b>{{ r.category }}</b>
+            {% for u in r.urls %}
+                <li>{{ u |safe }}</li>
+            {% endfor %}
+        <br>
+        </p>
+    {% endfor %}
+    </ul>
+{% else %}
+    No entries available.<br />
+{% endif %}
+
+{% include "recipients/footer.html" %}
