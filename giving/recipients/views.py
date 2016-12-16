@@ -47,6 +47,30 @@ def tweet(request):
 
     return render(request, 'recipients/one.html', context)
 
+
+def newsletter(request):
+
+    r = Recipient.objects.filter(newsletter_active=True, newsletter_sent_date=None)[:1]
+    print(r.query, r)
+    for x in r:
+        print x.newsletter_text
+    if r:
+        r = r[0]
+        send = request.GET.get('send', None)
+        if send:
+            r.newsletter_sent_date = timezone.now()
+            r.save()
+        text = r.newsletter_text
+    else:
+        text = None
+
+    context = {
+        'r': text
+    }
+
+    return render(request, 'recipients/newsletter.html', context)
+
+
 def index(request):
     groups = []
     cats = Category.objects.all().order_by('?')
