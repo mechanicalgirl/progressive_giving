@@ -87,7 +87,7 @@ def index(request):
     }
     """
 
-    list_all = Recipient.objects.filter(active=True).order_by('?')[:18]
+    list_all = Recipient.objects.filter(active=True).exclude(twitter_handle='@unknown').order_by('?')[:100]
     context = {
         'recipient_list': list_all
     }
