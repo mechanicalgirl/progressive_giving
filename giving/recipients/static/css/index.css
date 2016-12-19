@@ -1,0 +1,114 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.u-smallcaps {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.picker {
+  /*min-height: 60vh;*/
+  background-color: #000;
+  color: #fff;
+  padding: 3vh 0;
+}
+
+.picker aside {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1;
+  font-size: 80%;
+  margin-bottom: 2vh;
+}
+
+.picker__recipient {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 10vw !important;
+}
+
+.picker__recipient a,
+.picker__recipient a:link {
+  color: #FFF;
+  line-height: 100%;
+}
+
+.picker__recipient a:hover {
+  background-color: #09C;
+  text-decoration: none;
+}
+
+
+.newsletter {
+  padding: 3vh 0;
+  background-color: #F49;
+}
+
+.newsletter form {
+  margin-bottom: 0;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  justify-content: space-between;
+  overflow-x: scroll;
+  max-width: 96%;
+}
+
+/* Mobile-first: a category takes up the entire screen width */
+.category {
+  min-width: 96%;
+  margin-right: 4%;
+}
+
+@media (min-width: 400px) {
+  .category {
+    min-width: 100%;
+  }
+}
+
+/* This breakpoint is when the grid kicks in, so that's when a category takes up half the width */
+@media (min-width: 550px) {
+  .category {
+    min-width: 48%;
+  }
+}
+
+.category {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.category__title {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+ul.category__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category__list li {
+  margin: 0;
+  padding: 0;
+}
+
+.category__org-link {
+  
+}
+
+.category__twitter-link:link,
+.category__twitter-link:visited {
+  text-decoration: none;
+  color: #555;
+  font-size: 80%;
+}

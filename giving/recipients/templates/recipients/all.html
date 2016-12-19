@@ -1,5 +1,8 @@
 {% include "recipients/header.html" %}
 
+<div class="row">
+  
+  <div class="six columns">
 {% if recipient_list %}
     <ul>
     {% for r in recipient_list %}
@@ -15,5 +18,7 @@
 {% else %}
     No entries available.<br />
 {% endif %}
+  </div> {# .six .columns #}
+</div> {# .row #}
 
 {% include "recipients/footer.html" %}

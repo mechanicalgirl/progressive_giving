@@ -1,14 +1,33 @@
 {% include "recipients/header.html" %}
 
-{% if recipient_list %}
-    <ul>
-      {% for r in recipient_list %}
-        <li><a href="{{ r.url }}" target="new">{{ r.name }}</a>
-            (<a href="http://www.twitter.com/{{ r.twitter_handle }}" target="new">@{{ r.twitter_handle }})</li>
-      {% endfor %}
-    </ul>
-{% else %}
-    No entries available.<br />
-{% endif %}
+{% include "recipients/picker.html" %}
+
+{% include "recipients/newsletter_signup.html" %}
+
+<div class="container">
+  <div class="row category-list">
+    
+    {% for cat in categories %}
+    <section class="category six columns">
+      <h2 class="category__title">{{ cat.name }}</h2>
+      
+      <ul class="category__list">
+        {% for r in cat.recipients %}
+        <li>
+          <a class="category__org-link" href="{{r.url}}">{{r.name}}</a> 
+          {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
+          <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}">@{{r.twitter_handle}}</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    
+    {% endfor %}
+  
+  </div> {# .row #}
+  
+</div>
+
 
 {% include "recipients/footer.html" %}

@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
@@ -87,10 +89,22 @@ def index(request):
     }
     """
 
-    list_all = Recipient.objects.filter(active=True).exclude(twitter_handle='@unknown').order_by('?')
+    groups = []
+    cats = Category.objects.all().order_by('?')
+    for c in cats:
+        list_all = Recipient.objects.filter(active=True, category=c.id)
+        group = []
+        g = {'name': c.name, 'recipients': list_all}
+        groups.append(g)
+  
+    # list_all = Recipient.objects.filter(active=True).exclude(twitter_handle='@unknown').order_by('?')
+    random_recipient = random.choice(list_all)
+
     context = {
-        'recipient_list': list_all
+        'categories': groups,
+        'random_recipient': random_recipient
     }
+    
 
     # return render(request, 'recipients/all.html', context)
     return render(request, 'recipients/index.html', context)
