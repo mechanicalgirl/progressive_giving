@@ -1,7 +1,11 @@
 
 <section class="picker">
   <div class="container">
-    <aside>Progressive? Consider giving your money to</aside>
+    {% if random_recipient.can_donate_to %}
+        <aside>Progressive? Consider giving your money to</aside>
+    {% else %}
+        <aside>Progressive? Consider learning more about</aside>
+    {% endif %}
   
     <h1 class="picker__recipient">
       <a href="{{random_recipient.url}}" target="new">
