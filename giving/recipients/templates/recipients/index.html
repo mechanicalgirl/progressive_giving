@@ -14,9 +14,9 @@
       <ul class="category__list">
         {% for r in cat.recipients %}
         <li>
-          <a class="category__org-link" href="{{r.url}}">{{r.name}}</a> 
+          <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a> 
           {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
-          <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}">@{{r.twitter_handle}}</a>
+          <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
           {% endif %}
         </li>
         {% endfor %}

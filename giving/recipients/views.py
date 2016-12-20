@@ -2,7 +2,6 @@ import random
 
 from django.shortcuts import render
 from django.utils import timezone
-from django.utils.text import slugify
 
 from .models import Recipient, Category
 
@@ -83,7 +82,7 @@ def index(request):
     groups = []
     cats = Category.objects.all().order_by('?')
     for c in cats:
-        list_all = Recipient.objects.filter(active=True, category=c.id)
+        list_all = Recipient.objects.filter(active=True, category=c.id).order_by('name')
         if list_all:  # some categories do not have active recipients
             g = {'name': c.name, 'recipients': list_all}
             groups.append(g)
@@ -93,6 +92,5 @@ def index(request):
         'categories': groups,
         'random_recipient': random_recipient
     }
-
 
     return render(request, 'recipients/index.html', context)
