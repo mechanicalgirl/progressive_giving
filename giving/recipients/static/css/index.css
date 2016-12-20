@@ -30,6 +30,11 @@ body {
   font-size: 10vw !important;
 }
 
+.u-small-picker-name .picker__recipient {
+  font-size: 6vw !important;
+}
+
+
 .picker__recipient a,
 .picker__recipient a:link {
   color: #FFF;
