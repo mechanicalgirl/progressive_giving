@@ -2,8 +2,18 @@ import random
 
 from django.shortcuts import render
 from django.utils import timezone
+from django.utils.text import slugify
 
 from .models import Recipient, Category
+
+def by_slug(request, slug):
+    r = Recipient.objects.filter(active=True, name_slug=slug)
+    context = {
+        'categories': None,
+        'random_recipient': r[0]
+    }
+    return render(request, 'recipients/index.html', context)
+
 
 def tweet(request):
 
