@@ -15,6 +15,7 @@ class Recipient(models.Model):
     category = models.ForeignKey(Category)
 
     name = models.CharField(max_length=200, unique=True)
+    name_slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
     url = models.CharField(max_length=200)
     can_donate_to = models.BooleanField(default=True)
 

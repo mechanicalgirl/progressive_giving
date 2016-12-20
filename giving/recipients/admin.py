@@ -9,6 +9,7 @@ class RecipientAdmin(admin.ModelAdmin):
     ordering = ('-last_posted_date',)
     search_fields = ('name',)
     form = RecipientModelForm
+    prepopulated_fields = {"name_slug": ("name",)}
 
 admin.site.register(Category)
 admin.site.register(Recipient, RecipientAdmin)
