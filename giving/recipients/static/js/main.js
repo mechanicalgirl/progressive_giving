@@ -33,12 +33,20 @@
         // Don't allow any scrolling during the animation because it will
         // look weird as hell.
         event.preventDefault();
+        return;
       }
       if (TOUCHING) {
         ADJUST_ON_TOUCH_END = true;
         return;
       }
       
+      schedule();
+    });
+    
+    $(window).on('resize', function (event) {
+      if (ANIMATING) {
+        return;
+      }
       schedule();
     });
     
@@ -79,6 +87,19 @@
         ANIMATING = false;
       });
     }
+    
+    function handleLongRecipientNames() {
+      var recipientLink = document.querySelector('.picker__recipient a');
+      // Quick way to figure out how many lines this takes up. If we ever
+      // make the anchor a block-level element this will stop working.
+      if (recipientLink.getClientRects().length > 3) {
+        document.body.classList.add('u-small-picker-name');
+      }
+    }
+    
+    handleLongRecipientNames();
+    
+    window.setInterval(handleLongRecipientNames, 500);
   }
   
   $(setup);
