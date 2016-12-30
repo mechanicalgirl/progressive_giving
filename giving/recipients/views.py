@@ -29,18 +29,18 @@ def tweet(request):
         r.save(update_fields=["last_posted_date"])
 
     if r.tweet_text:
-        recipient = r.tweet_text
+        tweet_text = r.tweet_text
     else:
-        recipient = '%s needs your support! Donate/get involved here: %s and follow @%s' % (r.name, r.url, r.twitter_handle)
-        if len(recipient) > 140:
-            recipient = 'Help %s with a donation here: %s and follow @%s' % (r.name, r.url, r.twitter_handle)
-            if len(recipient) > 140:
-                recipient = '.@%s needs your help! Donate here: %s' % (r.twitter_handle, r.url)
-                if len(recipient) > 140:
+        tweet_text = '%s needs your support! Donate/get involved here: %s and follow @%s' % (r.name, r.url, r.twitter_handle)
+        if len(tweet_text) > 140:
+            tweet_text = 'Help %s with a donation. Visit %s and follow @%s' % (r.name, r.url, r.twitter_handle)
+            if len(tweet_text) > 140:
+                tweet_text = '.@%s needs your help! Donate here: %s' % (r.twitter_handle, r.url)
+                if len(tweet_text) > 140:
                     print("Error - write some tweet text for %s" % r.name)
 
     context = {
-        'r': recipient
+        'r': tweet_text
     }
 
     # to remove all dates, for cleanup if needed
