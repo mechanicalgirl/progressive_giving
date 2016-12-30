@@ -20,7 +20,7 @@ class Recipient(models.Model):
     can_donate_to = models.BooleanField(default=True)
 
     twitter_handle = models.CharField(max_length=100)
-    tweet_text = models.CharField(max_length=140, null=True, blank=True)
+    tweet_text = models.CharField(max_length=135, null=True, blank=True)
     last_posted_date = models.DateTimeField('date posted', null=True, blank=True)
     active = models.BooleanField(default=True)
 
