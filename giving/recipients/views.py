@@ -15,6 +15,16 @@ def by_slug(request, slug):
     return render(request, 'recipients/index.html', context)
 
 
+def by_cat(request, category):
+    r = Recipient.objects.filter(active=True, category__name=category)
+    context = {
+        'category': category,
+        'recipients': r,
+        'random_recipient': random.choice(r)
+    }
+    return render(request, 'recipients/category.html', context)
+
+
 def tweet(request):
 
     r = Recipient.objects.filter(active=True, last_posted_date=None).order_by('?')[:1]

@@ -96,6 +96,11 @@ body {
   font-family: 'Titillium Web', sans-serif;
 }
 
+.category__title a:not(:hover) {
+  color: #000;
+  text-decoration: none;
+}
+
 ul.category__list {
   list-style-type: none;
   margin: 0;

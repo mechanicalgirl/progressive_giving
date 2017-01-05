@@ -6,15 +6,14 @@
 
 <div class="container">
   <div class="row category-list">
-    
-    {% for cat in categories %}
+
     <section class="category six columns">
-      <h2 class="category__title"><a href="/category/{{ cat.name }}/">{{ cat.name }}</a></h2>
-      
+      <h2 class="category__title">{{ category }}</h2>
+
       <ul class="category__list">
-        {% for r in cat.recipients %}
+        {% for r in recipients %}
         <li>
-          <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a> 
+          <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a>
           {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
           <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
           {% endif %}
@@ -22,11 +21,9 @@
         {% endfor %}
       </ul>
     </section>
-    
-    {% endfor %}
-  
+
   </div> {# .row #}
-  
+
 </div>
 
 
