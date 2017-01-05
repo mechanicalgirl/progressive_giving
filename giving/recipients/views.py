@@ -43,18 +43,6 @@ def tweet(request):
         'r': tweet_text
     }
 
-    # to remove all dates, for cleanup if needed
-    # all_dated = Recipient.objects.filter(active=True).exclude(last_posted_date=None)
-    # for v in all_dated:
-    #     v.last_posted_date = None
-    #     v.save()
-
-    # to add dates to all, for testing only
-    # all_dated = Recipient.objects.filter(active=True, last_posted_date=None)
-    # for v in all_dated:
-    #     v.last_posted_date = timezone.now()
-    #     v.save()
-
     return render(request, 'recipients/one.html', context)
 
 
