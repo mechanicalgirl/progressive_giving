@@ -1,5 +1,6 @@
 import random
 
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
 
@@ -40,10 +41,11 @@ def tweet(request):
                     print("Error - write some tweet text for %s" % r.name)
 
     context = {
-        'r': tweet_text
+        'r': tweet_text,
+        'h': r.twitter_handle
     }
 
-    return render(request, 'recipients/one.html', context)
+    return JsonResponse(context)
 
 
 def newsletter(request):
