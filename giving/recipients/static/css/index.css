@@ -25,6 +25,12 @@ body {
   margin-bottom: 2vh;
 }
 
+@media (min-width: 550px) {
+  .picker aside {
+    font-size: 2vw;
+  }
+}
+
 .picker__recipient {
   font-family: 'Titillium Web', sans-serif;
   font-size: 10vw !important;
@@ -54,6 +60,18 @@ body {
 
 .newsletter form {
   margin-bottom: 0;
+}
+
+.about {
+  padding: 2em 0;
+  color: #fff;
+  background-color: #000;
+}
+
+.about img {
+  width: 10vw;
+  max-width: 200px;
+  height: auto;
 }
 
 .category-list {
