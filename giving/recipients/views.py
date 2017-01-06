@@ -102,4 +102,4 @@ def about(request):
         'random_recipient': random_recipient
     }
 
-    return render(request, 'recipients/about.html', context)
+    return render(request, 'recipients/about_page.html', context)
