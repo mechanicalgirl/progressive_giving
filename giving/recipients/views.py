@@ -94,3 +94,12 @@ def index(request):
     }
 
     return render(request, 'recipients/index.html', context)
+
+def about(request):
+    list_all = Recipient.objects.filter(active=True)
+    random_recipient = random.choice(list_all)
+    context = {
+        'random_recipient': random_recipient
+    }
+
+    return render(request, 'recipients/about.html', context)
