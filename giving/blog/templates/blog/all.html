@@ -1,0 +1,19 @@
+{% include "blog/header.html" %}
+{% include "blog/picker.html" %}
+
+<div class="container">
+
+    {% if entry_list %}
+        {% for entry in entry_list %}
+            <p>
+                <a href="/blog/post/{{ entry.slug }}/">{{ entry.title }}</a> {{ entry.created_at|date:"M d, Y" }}
+            </p>
+        {% endfor %}
+    {% else %}
+        No entries available.<br />
+    {% endif %}
+
+</div>
+
+{% include "blog/footer.html" %}
+{% include "recipients/newsletter_signup.html" %}
