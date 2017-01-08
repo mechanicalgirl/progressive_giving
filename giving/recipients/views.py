@@ -26,12 +26,15 @@ def by_cat(request, category):
 
 
 def tweet(request):
+    last = Recipient.objects.filter(active=True).order_by('-last_posted_date')[:1]
 
-    r = Recipient.objects.filter(active=True, last_posted_date=None).order_by('?')[:1]
+    # first look through recipients who haven't been posted yet
+    r = Recipient.objects.filter(active=True, last_posted_date=None).exclude(category=last[0].category).order_by('?')[:1]
     if r:
         r = r[0]
     else:
-        r = Recipient.objects.filter(active=True).order_by('-last_posted_date')[:1]
+        # if no un-posted recipients remain, return to the regular active list
+        r = Recipient.objects.filter(active=True).exclude(category=last[0].category).order_by('-last_posted_date')[:1]
         r = r[0]
 
     post_to_twitter = request.GET.get('post', None)
