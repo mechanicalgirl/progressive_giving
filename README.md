@@ -30,7 +30,7 @@ python manage.py createsuperuser
 To view:
 ------------------
 
-Admin:           http://127.0.0.1:8000/admin/
-Main:            http://127.0.0.1:8000/
-Single tweet:    http://127.0.0.1:8000/tweet/
-Org by slug:     http://127.0.0.1:8000/org/{slug}/
+    Admin:           http://127.0.0.1:8000/admin/
+    Main:            http://127.0.0.1:8000/
+    Single tweet:    http://127.0.0.1:8000/tweet/
+    Org by slug:     http://127.0.0.1:8000/org/{slug}/
