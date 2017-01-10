@@ -2,26 +2,33 @@
 
 {% include "recipients/picker.html" %}
 
+{% include "recipients/twitter.html" %}
+
 {% include "recipients/newsletter_signup.html" %}
 
-{% include "recipients/about.html" %}
-
-<div class="container">
-  <div class="row category-list">
-    
+<div class="container categories">
+  <div class="row">
+    <div class="twelve columns">
+      <p class="categories__text">Or find an organization working on a cause you care about…</p>
+    </div>
+  </div>
+  <div class="categories__list">
     {% for cat in categories %}
-    <section class="category six columns">
-      <h2 class="category__title"><a href="/category/{{ cat.name }}/">{{ cat.name }}</a></h2>
+    <section class="row categories__category">
+      <h2 class="categories__title six columns"><a href="/category/{{cat.name}}/">{{ cat.name }}</a></h2>
       
-      <ul class="category__list">
+      <ul class="categories__org-list six columns">
         {% for r in cat.recipients %}
         <li>
-          <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a> 
+          <a class="categories__org-link" href="{{r.url}}" target="new">{{r.name}}</a> 
           {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
-          <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
+          <a class="categories__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
           {% endif %}
         </li>
         {% endfor %}
+        <li>
+          <a class="categories__more-link" href="/category/{{ cat.name }}/">See more &rarr;</a></h2>
+        </li>
       </ul>
     </section>
     
@@ -31,5 +38,8 @@
   
 </div>
 
+{% include "recipients/about.html" %}
 
 {% include "recipients/footer.html" %}
+
+
