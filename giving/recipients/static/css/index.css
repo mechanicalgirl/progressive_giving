@@ -161,13 +161,15 @@ input[type="submit"].newsletter__button:active {
   min-width: 96%;
   flex: 0 0 auto;
   flex-grow: 1;
-  flex-basis: 0;
+  flex-basis: 96%;
 }
 
 @media (min-width: 750px) {
   .categories__category {
     margin-top: 0;
     min-width: 48%;
+    max-width: 48%;
+    flex-basis: 48%;
   }
 }
 
