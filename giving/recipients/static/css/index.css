@@ -2,6 +2,10 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+h2 {
+  letter-spacing: -0.05rem;
+}
+
 .u-smallcaps {
   text-transform: uppercase;
   font-weight: bold;
@@ -16,6 +20,7 @@ body {
   padding: 3vh 0;
 }
 
+/* The "Progressive? Give your money to..." text */
 .picker aside {
   text-transform: uppercase;
   font-weight: bold;
@@ -31,15 +36,23 @@ body {
   }
 }
 
+/* The name of the organization */
 .picker__recipient {
   font-family: 'Titillium Web', sans-serif;
-  font-size: 10vw !important;
+  font-size: 10vw;
 }
 
+/* We make the name smaller for orgs with very long names */
 .u-small-picker-name .picker__recipient {
-  font-size: 6vw !important;
+  font-size: 6vw;
 }
 
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .picker__recipient {
+    font-size: 120px;
+  }
+}
 
 .picker__recipient a,
 .picker__recipient a:link {
@@ -52,6 +65,22 @@ body {
   text-decoration: none;
 }
 
+.twitter {
+  padding: 3vh 0;
+  background-color: #0084b4;
+  color: #fff;
+}
+
+.twitter__widget {
+  min-height: 150px;
+}
+
+.twitter__text {
+  font-size: 24px;
+  line-height: 130%;
+  margin-top: 1rem;
+}
+
 
 .newsletter {
   padding: 3vh 0;
@@ -60,6 +89,28 @@ body {
 
 .newsletter form {
   margin-bottom: 0;
+}
+
+.newsletter__text {
+  letter-spacing: 1px;
+}
+
+input[type="submit"].newsletter__button {
+  font-size: 14px;
+  font-weight: bold;
+  border-color: #000;
+  color: #000;
+}
+
+input[type="submit"].newsletter__button:focus {
+  border-style: dotted;
+}
+
+input[type="submit"].newsletter__button:active {
+  padding-top: 1px;
+  padding-bottom: -1px;
+  padding-left: 31px;
+  padding-right: 29px;
 }
 
 .about {
@@ -74,69 +125,140 @@ body {
   height: auto;
 }
 
-.category-list {
+.about__text {
+  font-size: 20px;
+}
+
+.about .button-primary {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.categories {
+  
+}
+
+.categories__text {
+  margin: 3vw 0;
+  font-size: 28px;
+  letter-spacing: -1px;
+  text-align: center;
+  line-height: 130%;
+}
+
+.categories__list {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  -webkit-align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
   align-items: flex-start;
-  align-content: stretch;
-  justify-content: space-between;
-  overflow-x: scroll;
-  max-width: 96%;
 }
 
-/* Mobile-first: a category takes up the entire screen width */
-.category {
+
+.categories__category {
+  margin-top: 3rem;
   min-width: 96%;
-  margin-right: 4%;
+  flex: 0 0 auto;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
-@media (min-width: 400px) {
-  .category {
-    min-width: 100%;
-  }
-}
-
-/* This breakpoint is when the grid kicks in, so that's when a category takes up half the width */
-@media (min-width: 550px) {
-  .category {
+@media (min-width: 750px) {
+  .categories__category {
+    margin-top: 0;
     min-width: 48%;
   }
 }
 
-.category {
-  margin-top: 5vh;
+.categories__title {
+  hyphens: auto;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 36px;
+  box-sizing: border-box;
+  margin-bottom: 0.3rem;
+}
+
+@media (min-width: 750px) {
+  .categories__title.six.columns {
+    width: 96%;
+    text-align: left;
+  }
+  
+  .categories__org-list.six.columns {
+    width: 96%;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* 5/7 column split */
+  .categories__title.six.columns {
+    width: 40%;
+    text-align: right;
+  }
+  
+  .categories__org-list.six.columns {
+    width: 56%;
+  }
+}
+
+@media (min-width: 550px) {
+  .categories__title {
+    text-align: right;
+    padding-right: 5%;
+    font-size: 26px;
+  }
+}
+
+.categories__org-list {
+}
+
+
+/* Mobile-first: a category takes up the entire screen width */
+.categories__category {
+}
+
+
+/* This breakpoint is when the grid kicks in, so that's when a category takes up half the width */
+@media (min-width: 550px) {
+  .categories__category {
+  }
+}
+
+.categories__category {
   margin-bottom: 5vh;
 }
 
-.category__title {
-  font-family: 'Titillium Web', sans-serif;
-}
-
-.category__title a:not(:hover) {
+.categories__title a:not(:hover) {
   color: #000;
   text-decoration: none;
 }
 
-ul.category__list {
+ul.categories__org-list {
   list-style-type: none;
-  margin: 0;
+  margin: 0.7rem 0 0;
   padding: 0;
 }
 
-.category__list li {
-  margin: 0;
-  padding: 0;
+.categories__org-list li {
+  margin: 0 0 0.6rem;
+  padding: 0 0 0 15px;
+  text-indent: -15px;
+  line-height: 130%;
 }
 
-.category__org-link {
-  
+.categories__org-link {
 }
 
-.category__twitter-link:link,
-.category__twitter-link:visited {
+.categories__twitter-link:link,
+.categories__twitter-link:visited {
   text-decoration: none;
   color: #555;
   font-size: 80%;
+}
+
+.categories__more-link {
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  color: #000;
 }

@@ -85,7 +85,7 @@ def index(request):
     groups = []
     cats = Category.objects.all().order_by('?')
     for c in cats:
-        list_all = Recipient.objects.filter(active=True, category=c.id).order_by('name')
+        list_all = Recipient.objects.filter(active=True, category=c.id).order_by('?')[:5]
         if list_all:  # some categories do not have active recipients
             g = {'name': c.name, 'recipients': list_all}
             groups.append(g)

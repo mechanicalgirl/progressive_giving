@@ -59,6 +59,7 @@
     }
     
     function snapScroll() {
+      if (!$catList || !$catList[0]) { return; }
       var currentLeft = $catList[0].scrollLeft;
 
       // Grab the current left-offsets of the category container elements.
