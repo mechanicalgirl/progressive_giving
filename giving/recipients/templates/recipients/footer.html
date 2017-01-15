@@ -1,18 +1,27 @@
 {% load staticfiles %}
 
-<div align="center">
-
-  <a href="https://twitter.com/ProgressGive/" target="_blank">
-    <img src="{% static 'twitter.png' %}" alt="Twitter" height="50" width="50">
-  </a>
-
-  <a href="https://www.facebook.com/ProgressGive/" target="_blank">
-    <img src="{% static 'facebook.png' %}" alt="Facebook" height="50" width="50">
-  </a>
-
-</div>
-
-{# </div> <!-- .container --> #}
+<div class="footer">
+  <div class="container">
+    <div class="row footer__icons">
+      <div class="footer__twitter footer__link two columns">
+        <div class="footer__icon">
+          <a href="http://twitter.com/ProgressGive">
+            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            <span class="u-off-screen">@ProgressGive on Twitter</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__facebook footer__link two columns">
+        <div class="footer__icon">
+          <a href="http://facebook.com/ProgressGive">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            <span class="u-off-screen">ProgressGive on Facebook</span>
+          </a>
+        </div>
+      </div>
+    </div> {# .row #}
+  </div> {# .container #}
+</div> {# .footer #}
 
 </body>
 </html>
