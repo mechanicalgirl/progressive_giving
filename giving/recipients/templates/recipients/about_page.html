@@ -1,37 +1,74 @@
 {% include "recipients/header.html" %}
-{% include "recipients/picker.html" %}
-{% include "recipients/newsletter_signup.html" %}
+{# {% include "recipients/picker.html" %} #}
+{# {% include "recipients/newsletter_signup.html" %} #}
 
-<div class="container">
+{% include "recipients/about.html" %}
 
-    <p></p>
 
-    <h2>Put your money where your heart is - donate to causes and candidates that make the world a better place.</h2>
+<div class="container about-page">
+  
+  <div class="row">
+    <section class="about-text twelve columns">
+    <h2 class="about-text__title">Put your money where your heart is — donate to causes and candidates that make the world a better place.</h2>
 
     <p>Tech friends (and others), I have a favor to ask. I know a lot of you want to help save the world. Some of you have more money than time, and so it's good that you're donating. The ACLU and Planned Parenthood are great places to start, but there are a lot more organizations out there who could use your help.</p>
 
-    <p>The fight ahead is going to be a tough one. We've got a lot of work to do if we want to stop fascism and keep hate from becoming the new normal. Here's the thing, though - there are organizations out there who have been doing this stuff for years. They're much more prepared for this than any one of us alone - the most efficient thing you can do is support them.</p>
+    <p>The fight ahead is going to be a tough one. We've got a lot of work to do if we want to stop fascism and keep hate from becoming the new normal. Here’s the thing, though — <strong>the most efficient thing you can do is to support those organizations that have been doing progressive work for years</strong>.</p>
 
     <p>That’s where <a href="https://twitter.com/ProgressGive" target="new">ProgressGive</a> comes in.</p>
 
-    <p>The Twitter bot and this web site are sitting on top of a database of 500+ orgs (and growing). The bot posts 4 times a day, with links to NGOs, 501(c)(3)s, charities, and other types of organizations. Follow the Twitter account and learn how you can:
+    <p>The Twitter bot and this web site are sitting on top of a database of <strong>{{total_recipients}} organizations</strong>. The bot posts four times a day with links to NGOs, 501(c)(3)s, charities, and other types of organizations. Follow the Twitter account and learn how you can:</p>
+
     <ul>
-    <li>strengthen labor</li>
-    <li>fight racism</li>
-    <li>help refugees, and more</li>
+      <li>strengthen organized labor</li>
+      <li>defend an independent press</li>
+      <li>fight racism</li>
+      <li>help refugees</li>
+      <li>stand up for reproductive rights</li>
+      <li>and much, much more.</li>
     </ul>
-    Learn about candidates all over the country who are up for re-election and support them with a donation. Find local organizations you can get involved with to support civil rights and women's reproductive rights. Give a bigger voice to folks around the country who are advocating for sensible gun laws. You can always find the complete list of sites to donate to here at progressivegiving.com. Throw your money at them!</p>
+    
+    <p>Learn about candidates all over the country who are up for re-election and support them with a donation. Find local organizations you can get involved with to support civil rights and women's reproductive rights. Give a bigger voice to folks around the country who are advocating for sensible gun laws. You can always find the complete list of sites to donate to here at progressivegiving.com. Throw your money at them!</p>
 
     <p>And if you can't give, how about RT'ing a tweet or sharing a Facebook post? Amplifying voices and spreading the word always helps.</p>
 
-    <p>We’ll eventually add some fancy features like ... replying to followers with suggested charities? For now I just want to give these organizations some more exposure, match people who want to give with charities they might not have known about before.</p>
+    <p>We’ll eventually add some fancy features like… replying to followers with suggested charities? For now I just want to give these organizations some more exposure, match people who want to give with charities they might not have known about before.</p>
 
-    <p>So, that favor - if you're on Twitter, help us out and follow <a href="https://twitter.com/ProgressGive" target="new">ProgressGive</a> (and tell your friends about it!).</p>
+    <p>So, that favor: if you're on Twitter, <strong>help us out and follow <a href="https://twitter.com/ProgressGive" target="new">@ProgressGive</a></strong> (and tell your friends about it!).</p>
 
-    <p><blockquote><blockquote><a href="https://www.theguardian.com/us-news/2016/dec/25/progressive-donations-us-election-planned-parenthood-aclu" target="new">Progressive causes see 'unprecedented' upswing in donations after US election</a></blockquote></blockquote></p>
+    <blockquote><a href="https://www.theguardian.com/us-news/2016/dec/25/progressive-donations-us-election-planned-parenthood-aclu" target="new">Progressive causes see 'unprecedented' upswing in donations after US election</a></blockquote>
     
-    <p><blockquote><blockquote><a href="https://www.entrepreneur.com/video/287016" target="new">The Biochemical Reason Helping Others Is Good for You</a></blockquote></blockquote></p>
+    <blockquote><a href="https://www.entrepreneur.com/video/287016" target="new">The Biochemical Reason Helping Others Is Good for You</a></blockquote>
+      
+    </section>
+    
+    <section class="faq twelve columns">
+    
+    <h2 class="faq__title" id="faq">Frequently Asked Questions</h2>
 
-</div>
+      <h3>Why can’t I just give to ACLU or Planned Parenthood?</h3>
+    
+      <p>You can, and you should. The purpose of this site is to bring your attention to the breadth of organizations working on progressive causes. Maybe one of those causes is particularly important to you. Maybe you want to donate to someone local. You have the luxury of choosing from many worthwhile organizations that deserve your money.</p>
+      
+      <h3>So these organizations have been vetted and/or vouched for?</h3>
+      
+      <p>No, not at all. <strong>There is no substitute for doing your own diligence on charitable or political donations</strong> — including, if applicable, talking to the organization yourself or looking them up on sites like <a href="http://www.charitynavigator.org/" title="Charity Navigator - Your Guide To Intelligent Giving  | Home">Charity Navigator</a>. The purpose here isn’t to curate; it‘s to be broadly inclusive. The only criterion for being on this site is this: would someone opposed to the Donald Trump administration possibly want to donate to this organization?</p>
+      
+      <p>Think of this site as a tool to help you make a more informed decision about where you contribute your money and/or time.</p>
+    
+      <h3>I know of a great organization that isn’t listed here. How do I get it added?</h3>
+    
+      <p>We wouldn’t have <strong>{{total_recipients}} organizations</strong> in this database without the help of worldly people like you. You can tweet at @ProgressGive; humans will periodically read those mentions and add suggestions to the database.</p>
+      
+      <h3>I don’t think <em>[group X]</em> should be on this list for <em>[nuanced reason]</em>. How can I get it removed?</h3>
+    
+      <p>If the organization in question is so hostile to progressive causes that you feel there’s been an error, mention @ProgressGive on Twitter and we’ll look into it.</p>
+      
+      <p>If the organization is progressive but you take issue with certain positions of theirs: you’re welcome not to donate to them. In a room with five left-leaning people there are bound to be at least six opinions, and we make no guarantee that an organization featured on this site agrees with you on every single issue.</p>
+      
+    
+    </section>
+  </div> {# .row #}
+</div> {# .container #}
 
 {% include "recipients/footer.html" %}

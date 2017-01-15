@@ -91,6 +91,7 @@
     
     function handleLongRecipientNames() {
       var recipientLink = document.querySelector('.picker__recipient a');
+      if (!recipientLink) { return; }
       // Quick way to figure out how many lines this takes up. If we ever
       // make the anchor a block-level element this will stop working.
       if (recipientLink.getClientRects().length > 3) {

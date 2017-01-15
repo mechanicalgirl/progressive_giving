@@ -100,9 +100,11 @@ def index(request):
 
 def about(request):
     list_all = Recipient.objects.filter(active=True)
+    total = len(list_all)
     random_recipient = random.choice(list_all)
     context = {
-        'random_recipient': random_recipient
+        'random_recipient': random_recipient,
+        'total_recipients': total
     }
 
     return render(request, 'recipients/about_page.html', context)
