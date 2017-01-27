@@ -1,0 +1,23 @@
+{% include "recipients/header.html" %}
+
+{% include "recipients/twitter.html" %}
+
+<div class="container categories">
+  <div class="row">
+    <div class="twelve columns">
+
+<a class="categories__org-link" href="{{random_recipient.url}}" target="new">{{random_recipient.name}}</a><br>
+{% if random_recipient.twitter_handle and random_recipient.twitter_handle != "@unknown" %}
+<a class="categories__twitter-link" href="http://twitter.com/{{random_recipient.twitter_handle}}" target="new">@{{random_recipient.twitter_handle}}</a><br>
+{% endif %}
+{{ random_recipient.tweet_text }}<br>
+
+    </div>
+  </div>
+</div>
+
+{% include "recipients/newsletter_signup.html" %}
+
+{% include "recipients/footer.html" %}
+
+

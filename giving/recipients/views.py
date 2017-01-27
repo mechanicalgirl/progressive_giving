@@ -12,7 +12,7 @@ def by_slug(request, slug):
         'categories': None,
         'random_recipient': r[0]
     }
-    return render(request, 'recipients/index.html', context)
+    return render(request, 'recipients/slug.html', context)
 
 
 def by_cat(request, category):
