@@ -17,15 +17,16 @@ class RecipientAdmin(admin.ModelAdmin):
         if obj.tweet_text:
             color = 'yes'
         return format_html('<img src="/static/admin/img/icon-{}.svg" alt="True" data-pin-nopin="true">', color)
-        is_tw_text.short_description = 'TW'
-        is_tw_text.admin_order_field = 'tweet_text'
+    is_tw_text.short_description = 'TW'
+    is_tw_text.admin_order_field = 'tweet_text'
 
     def is_fb_text(self, obj):
         color = 'no'
         if obj.facebook_text:
             color = 'yes'
         return format_html('<img src="/static/admin/img/icon-{}.svg" alt="True" data-pin-nopin="true">', color)
-        is_tw_text.short_description = 'FB'
+    is_fb_text.short_description = 'FB'
+    is_fb_text.admin_order_field = 'facebook_text'
 
 admin.site.register(Category)
 admin.site.register(Recipient, RecipientAdmin)
