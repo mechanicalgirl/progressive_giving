@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
@@ -17,7 +16,7 @@ class Recipient(models.Model):
     name = models.CharField(max_length=200, unique=True)
     name_slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
     url = models.CharField(max_length=200)
-    can_donate_to = models.BooleanField(default=True)
+    can_donate_to = models.BooleanField(default=True, verbose_name="Donate")
 
     twitter_handle = models.CharField(max_length=100)
     tweet_text = models.CharField(max_length=135, null=True, blank=True)
