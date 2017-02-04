@@ -58,17 +58,13 @@ def tweet(request):
     if r.facebook_text:
         msg = r.facebook_text
     else:
-        m = ''
+        m = '%s needs your support! Click here to donate/learn more: %s ' % (r.name, r.url)
         if r.facebook_url:
-            m += '%s needs your support! Donate here: %s and like/follow %s' % (r.name, r.url, r.facebook_url)
-        else:
-            if r.twitter_handle and r.twitter_handle != '@unknown':
-                m += '%s needs your support! Donate here: %s and follow http://www.twitter.com/@%s' % (r.name, r.url, r.twitter_handle)
-            else:
-                m += '%s needs your support! Click here to donate/learn more: %s' % (r.name, r.url)
+            m += 'and like/follow %s ' % (r.facebook_url)
+        if r.twitter_handle and r.twitter_handle != '@unknown':
+            m += '(and follow on Twitter at http://www.twitter.com/@%s)' % (r.twitter_handle)
         msg = m
 
-    print msg
     cfg = {"page_id": settings.FB_PAGE_ID, "access_token": settings.FB_ACCESS_TOKEN}
     api = get_fb_api(cfg)
     status = api.put_wall_post(msg)
