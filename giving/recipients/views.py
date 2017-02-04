@@ -1,5 +1,7 @@
+import facebook
 import random
 
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -53,12 +55,41 @@ def tweet(request):
                 if len(tweet_text) > 140:
                     print("Error - write some tweet text for %s" % r.name)
 
+    if r.facebook_text:
+        msg = r.facebook_text
+    else:
+        m = ''
+        if r.facebook_url:
+            m += '%s needs your support! Donate here: %s and like/follow %s' % (r.name, r.url, r.facebook_url)
+        else:
+            if r.twitter_handle and r.twitter_handle != '@unknown':
+                m += '%s needs your support! Donate here: %s and follow http://www.twitter.com/@%s' % (r.name, r.url, r.twitter_handle)
+            else:
+                m += '%s needs your support! Click here to donate/learn more: %s' % (r.name, r.url)
+        msg = m
+
+    print msg
+    cfg = {"page_id": settings.FB_PAGE_ID, "access_token": settings.FB_ACCESS_TOKEN}
+    api = get_fb_api(cfg)
+    status = api.put_wall_post(msg)
+
     context = {
         'r': tweet_text,
         'h': r.twitter_handle
     }
 
     return JsonResponse(context)
+
+
+def get_fb_api(cfg):
+    graph = facebook.GraphAPI(cfg['access_token'])
+    resp = graph.get_object('me/accounts')
+    page_access_token = None
+    for page in resp['data']:
+      if page['id'] == cfg['page_id']:
+        page_access_token = page['access_token']
+    graph = facebook.GraphAPI(page_access_token)
+    return graph
 
 
 def newsletter(request):

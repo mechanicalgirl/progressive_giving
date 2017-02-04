@@ -25,6 +25,7 @@ class Recipient(models.Model):
     active = models.BooleanField(default=True)
 
     facebook_url = models.CharField(max_length=200, null=True, blank=True)
+    facebook_text = models.TextField(null=True, blank=True)
 
     newsletter_text = models.TextField(null=True, blank=True)
     newsletter_sent_date = models.DateTimeField('date mailed', null=True, blank=True)

@@ -7,4 +7,4 @@ class RecipientModelForm( forms.ModelForm ):
 
     class Meta:
         model = Recipient
-        fields = ['active', 'can_donate_to', 'category', 'name', 'name_slug', 'url', 'twitter_handle', 'tweet_text', 'facebook_url', 'last_posted_date', 'newsletter_text', 'newsletter_sent_date', 'newsletter_active']
+        fields = ['active', 'can_donate_to', 'category', 'name', 'name_slug', 'url', 'twitter_handle', 'tweet_text', 'facebook_url', 'facebook_text', 'last_posted_date', 'newsletter_text', 'newsletter_sent_date', 'newsletter_active']
