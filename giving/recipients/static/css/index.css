@@ -416,3 +416,13 @@ ul.categories__org-list {
 .footer__icon {
   text-align: center;
 }
+
+.category__title {
+  margin-top: 2rem;
+  font-family: 'Titillium Web', sans-serif;
+  text-transform: capitalize;
+}
+
+.category__twitter-link {
+  text-decoration: none;
+}

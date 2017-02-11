@@ -1,8 +1,10 @@
 {% include "recipients/header.html" %}
 
-{% include "recipients/picker.html" %}
+{# {% include "recipients/picker.html" %} #}
 
-{% include "recipients/newsletter_signup.html" %}
+{# {% include "recipients/newsletter_signup.html" %} #}
+
+{% include "recipients/about.html" %}
 
 <div class="container">
   <div class="row category-list">
@@ -15,7 +17,9 @@
         <li>
           <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a>
           {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
-          <a class="category__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
+          <a class="fa fa-twitter-square category__twitter-link" title="@{{r.twitter_handle}}" href="http://twitter.com/{{r.twitter_handle}}" target="new">
+            <span class="u-off-screen">@{{r.twitter_handle}}</span>
+          </a>
           {% endif %}
         </li>
         {% endfor %}
