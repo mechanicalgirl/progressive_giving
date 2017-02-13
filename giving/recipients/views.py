@@ -12,7 +12,7 @@ def by_slug(request, slug):
     r = Recipient.objects.filter(active=True, name_slug=slug)
     context = {
         'categories': None,
-        'random_recipient': r[0]
+        'recipient': r[0]
     }
     return render(request, 'recipients/slug.html', context)
 
@@ -58,16 +58,20 @@ def tweet(request):
     if r.facebook_text:
         msg = r.facebook_text
     else:
-        m = '%s needs your support! Click here to donate/learn more: %s ' % (r.name, r.url)
-        if r.facebook_url:
-            m += 'and like/follow %s ' % (r.facebook_url)
+        msg = '%s needs your support! ' % r.name
+    msg += '\r\n\r\nTo learn how you can get involved, visit: %s \r\n\r\n' % r.url
+    if r.facebook_url and r.facebook_url != r.url:
+        msg += 'For more, follow on Facebook at %s ' % r.facebook_url
         if r.twitter_handle and r.twitter_handle != '@unknown':
-            m += '(and follow on Twitter at http://www.twitter.com/@%s)' % (r.twitter_handle)
-        msg = m
+            msg += 'and on Twitter at http://www.twitter.com/%s' % r.twitter_handle
+    else:
+        if r.twitter_handle and r.twitter_handle != '@unknown':
+            msg += 'For more, follow on Twitter at %s ' % r.twitter_handle
 
-    cfg = {"page_id": settings.FB_PAGE_ID, "access_token": settings.FB_ACCESS_TOKEN}
-    api = get_fb_api(cfg)
-    status = api.put_wall_post(msg)
+    if post_to_twitter:
+        cfg = {"page_id": settings.FB_PAGE_ID, "access_token": settings.FB_ACCESS_TOKEN}
+        api = get_fb_api(cfg)
+        status = api.put_wall_post(msg)
 
     context = {
         'r': tweet_text,

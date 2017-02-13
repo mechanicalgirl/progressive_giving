@@ -1,23 +1,29 @@
 {% include "recipients/header.html" %}
 
-{% include "recipients/twitter.html" %}
+{% include "recipients/about.html" %}
 
 <div class="container categories">
-  <div class="row">
-    <div class="twelve columns">
+  <div class="row category-list">
 
-<a class="categories__org-link" href="{{random_recipient.url}}" target="new">{{random_recipient.name}}</a><br>
-{% if random_recipient.twitter_handle and random_recipient.twitter_handle != "@unknown" %}
-<a class="categories__twitter-link" href="http://twitter.com/{{random_recipient.twitter_handle}}" target="new">@{{random_recipient.twitter_handle}}</a><br>
-{% endif %}
-{{ random_recipient.tweet_text }}<br>
+    <section class="category twelve columns">
 
-    </div>
-  </div>
+      <p>
+        <br>
+        {{recipient.name}}<br>
+        <a href="{{recipient.url}}" target="new">{{recipient.url}}</a><br>
+        {% if recipient.twitter_handle and recipient.twitter_handle != "@unknown" %}
+          <a href="http://twitter.com/{{recipient.twitter_handle}}" target="new">@{{recipient.twitter_handle}}</a><br>
+        {% endif %}
+        {% if recipient.facebook_text %}
+          {{ recipient.facebook_text }}<br>
+        {% endif %}
+
+      </p>
+
+    </section>
+
+  </div> {# .row #}
+
 </div>
 
-{% include "recipients/newsletter_signup.html" %}
-
 {% include "recipients/footer.html" %}
-
-
