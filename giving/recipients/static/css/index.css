@@ -183,6 +183,11 @@ input[type="submit"].newsletter__button:active {
   color: #aaa;
 }
 
+.about__menu-item a,
+.about__menu-item a:visited {
+  color: #aaa;
+}
+
 @media (max-width: 549px) {
   /* On narrow screens, we display the menu choices as a simple list. */
   .about__menu-item {
@@ -321,7 +326,6 @@ ul.categories__org-list {
 .categories__org-list li {
   margin: 0 0 0.6rem;
   padding: 0 0 0 15px;
-  text-indent: -15px;
   line-height: 130%;
 }
 
@@ -329,7 +333,29 @@ ul.categories__org-list {
 }
 
 .categories__twitter-link:link,
-.categories__twitter-link:visited {
+.categories__twitter-link:visited,
+.recipient__twitter-link:link,
+.recipient__twitter-link:visited {
+  text-decoration: none;
+  color: #555;
+  font-size: 80%;
+}
+
+.u-indent-fix .recipient__twitter-link {
+  /* needs a margin because font-awesome makes the links inline-block */
+/*  margin-left: 15px;*/
+}
+
+.recipient__twitter-link:link + .recipient__facebook-link:link {
+  margin-left: 0;
+}
+
+.recipient__twitter-link:link,
+.recipient__twitter-link:visited,
+.recipient__facebook-link:link,
+.recipient__facebook-link:visited {
+  margin-left: 5px;
+  margin-right: 5px;
   text-decoration: none;
   color: #555;
   font-size: 80%;
@@ -387,7 +413,8 @@ ul.categories__org-list {
   color: #fff;
 }
 
-.footer a:link {
+.footer a:link,
+.footer a:visited {
   color: #fff;
 }
 

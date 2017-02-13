@@ -1,3 +1,5 @@
+{% load helpers %}
+
 {% include "recipients/header.html" %}
 
 {# {% include "recipients/picker.html" %} #}
@@ -15,12 +17,7 @@
       <ul class="category__list">
         {% for r in recipients %}
         <li>
-          <a class="category__org-link" href="{{r.url}}" target="new">{{r.name}}</a>
-          {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
-          <a class="fa fa-twitter-square category__twitter-link" title="@{{r.twitter_handle}}" href="http://twitter.com/{{r.twitter_handle}}" target="new">
-            <span class="u-off-screen">@{{r.twitter_handle}}</span>
-          </a>
-          {% endif %}
+          {% link_to_recipient r %}
         </li>
         {% endfor %}
       </ul>
