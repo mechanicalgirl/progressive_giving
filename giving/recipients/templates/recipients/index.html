@@ -1,3 +1,5 @@
+{% load helpers %}
+
 {% include "recipients/header.html" %}
 
 {% include "recipients/picker.html" %}
@@ -22,10 +24,7 @@
       <ul class="categories__org-list six columns">
         {% for r in cat.recipients %}
         <li>
-          <a class="categories__org-link" href="{{r.url}}" target="new">{{r.name}}</a> 
-          {% if r.twitter_handle and r.twitter_handle != "@unknown" %}
-          <a class="categories__twitter-link" href="http://twitter.com/{{r.twitter_handle}}" target="new">@{{r.twitter_handle}}</a>
-          {% endif %}
+          {% link_to_recipient r classname="u-indent-fix" %}
         </li>
         {% endfor %}
         <li>

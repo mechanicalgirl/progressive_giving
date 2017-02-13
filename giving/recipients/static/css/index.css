@@ -183,6 +183,11 @@ input[type="submit"].newsletter__button:active {
   color: #aaa;
 }
 
+.about__menu-item a,
+.about__menu-item a:visited {
+  color: #aaa;
+}
+
 @media (max-width: 549px) {
   /* On narrow screens, we display the menu choices as a simple list. */
   .about__menu-item {
@@ -329,10 +334,17 @@ ul.categories__org-list {
 }
 
 .categories__twitter-link:link,
-.categories__twitter-link:visited {
+.categories__twitter-link:visited,
+.recipient__twitter-link:link,
+.recipient__twitter-link:visited {
   text-decoration: none;
   color: #555;
   font-size: 80%;
+  /* needs a margin because font-awesome makes the links inline-block */
+}
+
+.u-indent-fix .recipient__twitter-link {
+  margin-left: 15px;
 }
 
 .categories__more-link {
@@ -387,7 +399,8 @@ ul.categories__org-list {
   color: #fff;
 }
 
-.footer a:link {
+.footer a:link,
+.footer a:visited {
   color: #fff;
 }
 
