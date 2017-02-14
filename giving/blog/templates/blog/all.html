@@ -2,20 +2,32 @@
 
 {% include "recipients/about.html" %}
 
-<div class="container">
 
-    {% if entry_list %}
-        <br>
-        {% for entry in entry_list %}
-            <ul>
-              <li><a href="/blog/post/{{ entry.slug }}/">{{ entry.title }}</a> {{ entry.created_at|date:"M d, Y" }}</li>
-            </ul>
-        {% endfor %}
-    {% else %}
-        No entries available.<br />
+<div class="page">
+
+  <div class="container">
+    
+    {% if latest_entry %}
+      {% include "blog/post.html" with entry=latest_entry %}
     {% endif %}
 
-</div>
+    {% if older_entries %}
+      <section class="page__section page__older-entries">
+        <h2 class="page__heading">Older Entries</h2>
+          <ul>
+        {% for entry in older_entries %}
+            <li>
+              <a href="/blog/post/{{ entry.slug }}/">{{ entry.title }}</a>
+              <datetime>{{ entry.created_at|date:"M j, Y" }}</datetime>
+            </li>
+        {% endfor %}
+          </ul>
+      </section>
+    {% endif %}
+  </div> {# .container #}
+  
+</div> {# .page #}
+
 
 {% include "recipients/newsletter_signup.html" %}
 

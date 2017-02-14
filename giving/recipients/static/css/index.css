@@ -453,3 +453,74 @@ ul.categories__org-list {
 .category__twitter-link {
   text-decoration: none;
 }
+
+.page {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+h1.page__title, h2.page__heading {
+  font-family: 'Titillium Web', sans-serif;
+  font-style: normal;
+}
+
+h2.page__heading {
+  font-size: 3rem;
+}
+
+.post {
+  
+}
+
+.post__title {
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  font-size: 4rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0.5rem;
+  line-height: 100%;
+}
+
+.post__title a:link,
+.post__title a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.post__date {
+  line-height: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  padding-left: 0.25rem;
+}
+
+.post__body {
+  margin-top: 2.5rem;
+  line-height: 140%;
+  font-size: 2.2rem;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.page__older-entries {
+  border-top: 3px solid #666;
+  padding-top: 2rem;
+}
+
+.page__heading {
+  margin-bottom: 1rem;
+}
+
+.page__older-entries ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.page__older-entries li datetime {
+  font-size: 1.4rem;
+  font-style: normal;
+  padding-left: 1rem;
+}

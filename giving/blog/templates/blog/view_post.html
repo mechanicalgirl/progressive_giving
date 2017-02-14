@@ -2,18 +2,12 @@
 
 {% include "recipients/about.html" %}
 
-<div class="container">
 
-    {% if entry %}
-        <h1>{{ entry.title }}</h1>
-        {{ entry.created_at|date:"M d, Y" }}
-        <p>
-            {{ entry_body|safe }}
-        </p>
-    {% else %}
-        <p>Sorry, nothing to see here.</p>
-    {% endif %}
-
+<div class="page">
+  <div class="container">
+    
+    {% include "blog/post.html" %}
+  </div>  
 </div>
 
 {% include "recipients/newsletter_signup.html" %}

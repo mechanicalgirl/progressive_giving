@@ -1,0 +1,20 @@
+{% if entry %}
+  <div class="post">
+    <h2 class="post__title">
+      <a href="/blog/post/{{ entry.slug }}/">
+        {{ entry.title }}
+      </a>
+    </h2>
+    
+    <div class="post__date">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+      <datetime>{{ entry.created_at|date:"M d, Y" }}</datetime>
+    </div>
+
+    <div class="post__body">
+      {{ entry.recipient.newsletter_text|safe }}
+    </div>
+  </div>
+{% else %}
+    <p>Sorry, nothing to see here.</p>
+{% endif %}
