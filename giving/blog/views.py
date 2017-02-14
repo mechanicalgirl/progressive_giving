@@ -9,7 +9,8 @@ def list_all(request):
     """
     list_all = Post.objects.filter(publish=True).order_by('-created_at')
     context = {
-        'entry_list': list_all,
+        'latest_entry': list_all[0],
+        'older_entries': list_all[1:],
         'url': request.META['QUERY_STRING'],
     }
     return render(request, 'blog/all.html', context)
