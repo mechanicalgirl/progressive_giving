@@ -24,6 +24,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'recipients',
     'blog',
+    'donations',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

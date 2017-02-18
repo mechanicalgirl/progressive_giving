@@ -1,0 +1,25 @@
+{% for k,v in totals.iteritems %}
+ <p>
+
+  <div style="padding-left: 50px;">
+      <b> Week {{ k.1 }}, {{ k.0 }}</b><br>
+  </div>
+
+  <table cellpadding="10">
+  {% for a in v.0 %}
+    <tr>
+      <td>{{ a.donation_date }}</td>
+      <td>{{ a.recipient }}</td>
+      <td style="text-align: right">{{ a.amount }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+
+  <div style="padding-left: 50px;">
+      Total: <b>{{ v.1 }}</b><br>
+  </div>
+
+  <hr>
+
+ </p>
+{% endfor %}
