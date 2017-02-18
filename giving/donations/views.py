@@ -20,10 +20,15 @@ def index(request):
         for a in grouped[g]:
             weekly_totals[g] += a.amount
 
+    d = {}
+    for k,v in grouped.items():
+        d[k] = (v, weekly_totals[k])
+    """
     d = defaultdict(list)
     for a, b in grouped.items() + weekly_totals.items():
         d[a].append(b)
     d = dict(d)
+    """
     od = OrderedDict(sorted(d.items(), reverse=True))
 
     context = {
