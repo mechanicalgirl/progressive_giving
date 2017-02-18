@@ -24,6 +24,7 @@
       <ul class="categories__org-list six columns">
         {% for r in cat.recipients %}
         <li>
+          {# <a href="/org/{{ r.name_slug }}/" target="new">{{ r.name }}</a> #}
           {% link_to_recipient r %}
         </li>
         {% endfor %}

@@ -8,15 +8,30 @@
     <section class="category twelve columns">
 
       <p>
-        <br>
-        {{recipient.name}}<br>
-        <a href="{{recipient.url}}" target="new">{{recipient.url}}</a><br>
-        {% if recipient.twitter_handle and recipient.twitter_handle != "@unknown" %}
-          <a href="http://twitter.com/{{recipient.twitter_handle}}" target="new">@{{recipient.twitter_handle}}</a><br>
-        {% endif %}
-        {% if recipient.facebook_text %}
-          {{ recipient.facebook_text }}<br>
-        {% endif %}
+
+        <h1>{{recipient.name}}</h1>
+
+        <p>
+            {% if recipient.facebook_text %}
+              {{ recipient.facebook_text }}<br>
+            {% endif %}
+        </p>
+
+        <p>
+            URL: <a href="{{recipient.url}}" target="new">{{recipient.url}}</a>
+        </p>
+
+        <p>
+            {% if recipient.twitter_handle and recipient.twitter_handle != "@unknown" %}
+              Twitter: <a href="http://twitter.com/{{recipient.twitter_handle}}" target="new">http://twitter.com/@{{recipient.twitter_handle}}</a><br>
+            {% endif %}
+        </p>
+
+        <p>
+            {% if recipient.facebook_url %}
+              Facebook: <a href="{{ recipient.facebook_url }}" target="new">{{ recipient.facebook_url }}</a><br>
+            {% endif %}
+        </p>
 
       </p>
 
