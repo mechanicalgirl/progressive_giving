@@ -3,8 +3,11 @@ import datetime
 
 from django.shortcuts import render
 
+from lockdown.decorators import lockdown
+
 from .models import Amount
 
+@lockdown()
 def index(request):
     amounts = Amount.objects.all()
 

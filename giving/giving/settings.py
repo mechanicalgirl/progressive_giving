@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'recipients',
     'blog',
     'donations',
+    'lockdown',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,6 +94,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+LOCKDOWN_PASSWORDS = ('champs', 'candle79')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
