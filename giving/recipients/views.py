@@ -3,10 +3,11 @@ import random
 
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 
-from .models import Recipient, Category
+from .models import Recipient, Category, SuggestedRecipient
+from .forms import SuggestedRecipientForm
 
 def by_slug(request, slug):
     r = Recipient.objects.filter(active=True, name_slug=slug)
@@ -139,3 +140,28 @@ def about(request):
     }
 
     return render(request, 'recipients/about_page.html', context)
+
+def suggestion_form(request):
+
+    if request.method == "POST":
+        form = SuggestedRecipientForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            # post.date_created = timezone.now()
+            post.save()
+            return redirect('/thankyou/', pk=post.pk)
+    else:
+        form = SuggestedRecipientForm()
+
+    return render(request, 'recipients/suggestionform.html', {'form': form})
+
+def thank_you(request, pk=None):
+    obj = None
+    if pk:
+        obj = SuggestedRecipient.objects.get(pk=pk)
+
+    context = {
+        'suggestion': obj
+    }
+    return render(request, 'recipients/thankyou.html', context)
+

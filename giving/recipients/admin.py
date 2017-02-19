@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Category, Recipient
+from .models import Category, Recipient, SuggestedRecipient
 from .forms import RecipientModelForm
+
+class SuggestedRecipientAdmin(admin.ModelAdmin):
+    ordering = ('-date_created',)
 
 class RecipientAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'last_posted_date', 'active', 'can_donate_to', 'has_tw_handle', 'has_fb_url', 'is_news_active')
@@ -54,3 +57,4 @@ class RecipientAdmin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Recipient, RecipientAdmin)
+admin.site.register(SuggestedRecipient, SuggestedRecipientAdmin)

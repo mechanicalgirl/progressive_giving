@@ -35,3 +35,17 @@ class Recipient(models.Model):
 
     def __str__(self):
         return self.name
+
+class SuggestedRecipient(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    url = models.CharField(max_length=200, unique=True)
+    twitter_handle = models.CharField(max_length=100, null=True, blank=True, unique=True)
+    facebook_url = models.CharField(max_length=200, null=True, blank=True, unique=True)
+    cleared = models.BooleanField(default=False)
+    date_created = models.DateTimeField('created on', auto_now_add=True)
+
+    class Meta:
+        ordering = ["date_created"]
+
+    def __str__(self):
+        return self.name

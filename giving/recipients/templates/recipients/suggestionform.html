@@ -1,0 +1,40 @@
+{% include "recipients/header.html" %}
+{% include "recipients/about.html" %}
+<div class="container categories">
+  <div class="row category-list">
+    <section class="category twelve columns">
+
+      <br>
+      <h4>Is there a charitable organization you think we should know about?<br>Tell us here!</h4>
+
+          <form method="POST" class="post-form">{% csrf_token %}
+            {% csrf_token %}
+            <table>
+              <tr>
+                <td><label for="{{ form.name.id_for_label }}">Organization name (required):</label></td>
+                <td>{{ form.name }}</td>
+                <td style="color: red">{{ form.name.errors }}</td>
+              </tr>
+              <tr>
+                <td><label for="{{ form.url.id_for_label }}">URL (required):</label></td>
+                <td>{{ form.url }}</td>
+                <td style="color: red">{{ form.url.errors }}</td>
+              </tr>
+              <tr>
+                <td><label for="{{ form.twitter_handle.id_for_label }}">Twitter handle:</label></td>
+                <td>{{ form.twitter_handle }}</td>
+                <td style="color: red">{{ form.twitter_handle.errors }}</td>
+              </tr>
+              <tr>
+                <td><label for="{{ form.facebook_url.id_for_label }}">Facebook URL:</label></td>
+                <td>{{ form.facebook_url }}</td>
+                <td style="color: red">{{ form.facebook_url.errors }}</td>
+              </tr>
+            </table>
+            <button type="submit" class="save btn btn-default">Submit</button>
+          </form>
+
+    </section>
+  </div> {# .row #}
+</div>
+{% include "recipients/footer.html" %}
