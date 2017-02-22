@@ -19,6 +19,19 @@ h2 {
   left: -9999px;
 }
 
+.u-errors {
+  color: #990000;
+}
+
+.u-errors ul {
+  padding-left: 0;
+}
+
+.u-errors ul,
+.u-errors li {
+  list-style-type: none;
+}
+
 .picker {
   /*min-height: 60vh;*/
   background-color: #000;
@@ -523,4 +536,15 @@ h2.page__heading {
   font-size: 1.4rem;
   font-style: normal;
   padding-left: 1rem;
+}
+
+.suggestion-form {
+  
+}
+
+.suggestion-form__title {
+  font-family: 'Titillium Web', sans-serif;
+  font-style: italic;
+  font-size: 3rem;
+  margin-top: 4rem;
 }

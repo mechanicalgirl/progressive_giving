@@ -14,6 +14,11 @@ class RecipientModelForm(forms.ModelForm):
 
 class SuggestedRecipientForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+      super(SuggestedRecipientForm, self).__init__(*args, **kwargs)
+      for field_name in self.fields:
+        self.fields[field_name].widget.attrs['class'] = 'u-full-width'
+
     def clean_name(self):
         name = self.cleaned_data['name']
         if SuggestedRecipient.objects.filter(name=name).exists():
