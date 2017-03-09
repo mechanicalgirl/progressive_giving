@@ -67,7 +67,7 @@ def tweet(request):
             msg += 'and on Twitter at http://www.twitter.com/%s' % r.twitter_handle
     else:
         if r.twitter_handle and r.twitter_handle != '@unknown':
-            msg += 'For more, follow on Twitter at %s ' % r.twitter_handle
+            msg += 'For more, follow on Twitter at http://www.twitter.com/%s ' % r.twitter_handle
 
     if post_to_twitter:
         cfg = {"page_id": settings.FB_PAGE_ID, "access_token": settings.FB_ACCESS_TOKEN}
