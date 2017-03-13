@@ -8,7 +8,7 @@ class SuggestedRecipientAdmin(admin.ModelAdmin):
     ordering = ('-date_created',)
 
 class RecipientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'last_posted_date', 'active', 'can_donate_to', 'has_tw_handle', 'has_fb_url', 'is_news_active')
+    list_display = ('name', 'category', 'last_posted_date', 'active', 'can_donate_to', 'candidate_deadline', 'is_news_active')
     list_filter = ('category', )
     ordering = ('-last_posted_date',)
     search_fields = ('name',)

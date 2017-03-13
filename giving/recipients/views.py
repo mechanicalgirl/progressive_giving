@@ -1,7 +1,9 @@
+from datetime import datetime
 import facebook
 import random
 
 from django.conf import settings
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
@@ -32,12 +34,12 @@ def tweet(request):
     last = Recipient.objects.filter(active=True).order_by('-last_posted_date')[:1]
 
     # first look through recipients who haven't been posted yet
-    r = Recipient.objects.filter(active=True, last_posted_date=None).exclude(category=last[0].category).order_by('?')[:1]
+    r = Recipient.objects.filter(active=True, last_posted_date=None).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).exclude(category=last[0].category).order_by('?')[:1]
     if r:
         r = r[0]
     else:
         # if no un-posted recipients remain, return to the regular active list
-        r = Recipient.objects.filter(active=True).exclude(category=last[0].category).order_by('-last_posted_date')[:1]
+        r = Recipient.objects.filter(active=True).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).exclude(category=last[0].category).order_by('-last_posted_date')[:1]
         r = r[0]
 
     post_to_twitter = request.GET.get('post', None)

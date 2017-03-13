@@ -30,6 +30,8 @@ class Recipient(models.Model):
     newsletter_sent_date = models.DateTimeField('date mailed', null=True, blank=True)
     newsletter_active = models.BooleanField(default=False)
 
+    candidate_deadline = models.DateTimeField('vote date', null=True, blank=True)
+
     class Meta:
         ordering = ["last_posted_date", "name"]
 
