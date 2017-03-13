@@ -21,7 +21,7 @@ def by_slug(request, slug):
 
 
 def by_cat(request, category):
-    r = Recipient.objects.filter(active=True, category__name=category)
+    r = Recipient.objects.filter(active=True, category__name=category).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now()))
     context = {
         'category': category,
         'recipients': r,
@@ -119,7 +119,7 @@ def index(request):
     groups = []
     cats = Category.objects.all().order_by('?')
     for c in cats:
-        list_all = Recipient.objects.filter(active=True, category=c.id).order_by('?')[:5]
+        list_all = Recipient.objects.filter(active=True, category=c.id).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).order_by('?')[:5]
         if list_all:  # some categories do not have active recipients
             g = {'name': c.name, 'recipients': list_all}
             groups.append(g)
