@@ -21,7 +21,7 @@ def by_slug(request, slug):
 
 
 def by_cat(request, category):
-    r = Recipient.objects.filter(active=True, category__name=category).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now()))
+    r = Recipient.objects.filter(active=True, category__name=category).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=timezone.now()))
     context = {
         'category': category,
         'recipients': r,
@@ -34,12 +34,12 @@ def tweet(request):
     last = Recipient.objects.filter(active=True).order_by('-last_posted_date')[:1]
 
     # first look through recipients who haven't been posted yet
-    r = Recipient.objects.filter(active=True, last_posted_date=None).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).exclude(category=last[0].category).order_by('?')[:1]
+    r = Recipient.objects.filter(active=True, last_posted_date=None).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=timezone.now())).exclude(category=last[0].category).order_by('?')[:1]
     if r:
         r = r[0]
     else:
         # if no un-posted recipients remain, return to the regular active list
-        r = Recipient.objects.filter(active=True).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).exclude(category=last[0].category).order_by('-last_posted_date')[:1]
+        r = Recipient.objects.filter(active=True).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=timezone.now())).exclude(category=last[0].category).order_by('-last_posted_date')[:1]
         r = r[0]
 
     post_to_twitter = request.GET.get('post', None)
@@ -119,7 +119,7 @@ def index(request):
     groups = []
     cats = Category.objects.all().order_by('?')
     for c in cats:
-        list_all = Recipient.objects.filter(active=True, category=c.id).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=datetime.now())).order_by('?')[:5]
+        list_all = Recipient.objects.filter(active=True, category=c.id).filter(Q(candidate_deadline__isnull=True) | Q(candidate_deadline__gte=timezone.now())).order_by('?')[:5]
         if list_all:  # some categories do not have active recipients
             g = {'name': c.name, 'recipients': list_all}
             groups.append(g)
