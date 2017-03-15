@@ -12,26 +12,40 @@
         <h1>{{recipient.name}}</h1>
 
         <p>
-            {% if recipient.facebook_text %}
-              {{ recipient.facebook_text }}<br>
+          {% if recipient.facebook_text %}
+            {{ recipient.facebook_text }}<br>
+          {% endif %}
+        </p>
+
+        <table>
+
+            {% if recipient.candidate_deadline %}
+              <tr>
+                <td><strong>Vote</strong>:</td>
+                <td>{{ recipient.candidate_deadline|date:"M d, Y" }}</td>
+              </tr>
             {% endif %}
-        </p>
+        
+              <tr>
+                <td><strong>URL</strong>:</td>
+                <td><a href="{{recipient.url}}" target="new">{{recipient.url}}</a></td>
+              </tr>
 
-        <p>
-            URL: <a href="{{recipient.url}}" target="new">{{recipient.url}}</a>
-        </p>
-
-        <p>
             {% if recipient.twitter_handle and recipient.twitter_handle != "@unknown" %}
-              Twitter: <a href="http://twitter.com/{{recipient.twitter_handle}}" target="new">http://twitter.com/@{{recipient.twitter_handle}}</a><br>
+              <tr>
+                <td><strong>Twitter</strong>:</td>
+                <td><a href="http://twitter.com/{{recipient.twitter_handle}}" target="new">http://twitter.com/@{{recipient.twitter_handle}}</a></td>
+              </tr>
             {% endif %}
-        </p>
 
-        <p>
             {% if recipient.facebook_url %}
-              Facebook: <a href="{{ recipient.facebook_url }}" target="new">{{ recipient.facebook_url }}</a><br>
+              <tr>
+                <td><strong>Facebook</strong>:</td>
+                <td><a href="{{ recipient.facebook_url }}" target="new">{{ recipient.facebook_url }}</a></td>
+              </tr>
             {% endif %}
-        </p>
+
+        </table>
 
       </p>
 

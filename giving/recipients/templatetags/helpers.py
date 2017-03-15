@@ -5,7 +5,8 @@ register = template.Library()
 
 @register.simple_tag
 def link_to_recipient(r, classname=""):
-  out = format_html(u"""<span class="recipient__helper {}"><a class="recipient__link " href="{}" target="new">{}</a>""", classname, r.url, r.name)
+  url = '/org/%s/' % r.name_slug
+  out = format_html(u"""<span class="recipient__helper {}"><a class="recipient__link " href="{}">{}</a>""", classname, url, r.name)
 
   # Twitter
   if r.twitter_handle and r.twitter_handle != "@unknown":
