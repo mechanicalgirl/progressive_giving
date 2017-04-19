@@ -7,3 +7,4 @@ requests-oauthlib==0.7.0
 six==1.10.0
 tweepy==3.5.0
 wheel==0.24.0
+pyphen==0.9.4

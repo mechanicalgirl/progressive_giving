@@ -108,3 +108,74 @@
 })();
 
 
+(function() {
+  
+  function toArray(thing) {
+    return Array.prototype.slice.call(thing, 0);
+  }
+  
+  function hyphenatedWord(str) {
+    return '<span class="u-hyphens-allowed">' + str + '</span>';
+  }
+  
+  
+  function checkHyphenation(i, el) {
+    var $el = $(el);
+    if ( $el.has('span') ) {
+      $el.html( $el.text() );
+    }
+
+    var parentWidth = el.parentNode.offsetWidth;
+    if (el.offsetWidth <= parentWidth) { return; }
+    
+    var words = $el.text().split(/\s+/);
+    var rects = toArray( el.getClientRects() );
+    
+    var indices = [];
+    rects.forEach(function (rect, i) {
+      if (rect.width > parentWidth) {
+        indices.push(i);
+      }
+    });
+    
+    indices.forEach(function (i) {
+      words[i] = hyphenatedWord(words[i]);
+    });
+    
+    $el.html( words.join(' ') );
+  }
+  
+  
+  $(document).on('ready', function () {
+    var $catNames = $('.categories__title a');
+    if (!$catNames.length) { return; }
+    
+    $catNames.each(checkHyphenation);
+    listenForResize();
+  });
+  
+  function recheck() {
+    $('.categories__title p').each(checkHyphenation);
+    
+    var categoryNames = toArray( document.querySelectorAll('.categories__title a') );
+    categoryNames.each(checkHyphenation);
+    resizeTimeout = null;
+  }
+  
+  
+  function listenForResize() {
+    var resizeTimeout = null;
+  
+    window.addEventListener('resize', function () {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = null;
+      }
+      setTimeout(recheck, 500);
+    });
+    
+  }
+  
+  
+  
+})();

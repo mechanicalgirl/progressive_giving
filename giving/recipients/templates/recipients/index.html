@@ -19,7 +19,7 @@
   <div class="categories__list">
     {% for cat in categories %}
     <section class="row categories__category">
-      <h2 class="categories__title six columns"><a href="/category/{{cat.name}}/">{{ cat.name }}</a></h2>
+      <h2 class="categories__title six columns"><a href="/category/{{cat.name}}/">{% mark_for_hyphenation cat.name %}</a></h2>
       
       <ul class="categories__org-list six columns">
         {% for r in cat.recipients %}
