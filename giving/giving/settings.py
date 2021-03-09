@@ -9,10 +9,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'upw&k_x9$f5%(0=@1mu&ga__2#_!ebk&zek&7p*$^y@l9a$y!&'
+SECRET_KEY = ''
 
-FB_PAGE_ID = '431649186959534'
-FB_ACCESS_TOKEN = 'EAAOsnTB7uKcBAPOVUpO1p3xlM1yopnyLoOtZCOTVI25DaG223U1xxhHcba0z1u1P9ai6Kx3JInCzM8xOHVbZCBdCo4oWpvrRmr8ZBa9vs7IDiZB1Cdvg4sOZAillit5KOQhXZAY9W40ZBZBkNhA4y8MupvtJPEa1p4IZD'
+FB_PAGE_ID = ''
+FB_ACCESS_TOKEN = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
